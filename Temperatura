@@ -1,0 +1,16 @@
+void setup() {
+  size(100, 100); //Tamaño de la interfaz
+}
+void draw() {
+  int temp= 28; //Nivel de Temperatura
+
+  if (temp<=5) {
+    println("Usa chumpa y gorro"); //Impresion dentro de la consola
+  } else if (temp<=15) { //Si la temperatura es mayor a 15 usara Sweeter
+    println("Usa sweeter"); //Impresion dentro de la consola
+  } else if (temp<=25) { //Si la temperatura es mayor a 25 usara Shorts
+    println("Usa shorts"); //Impresion dentro de la consola
+  } else {
+    println("No uses nada"); //Impresion dentro de la consola
+  } 
+}
