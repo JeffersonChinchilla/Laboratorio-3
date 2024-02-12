@@ -1,0 +1,153 @@
+void setup() {
+  size(250, 300); //Tamaño del Cuadro que ejecutara el programa
+}
+
+int valorDisplay = 0;
+int numeroSeleccionado = 0;
+char operador = ' ';
+int primerNumero = 0;
+boolean primerNumeroIngresado = false;
+
+void draw() {
+  background(0); //Color del Fondo del Cuadro que ejecuto el programa
+
+  textSize(50);  //boton 1
+  fill(255); //llena de color negro
+  rect(20, 80, 40, 40);//Ubicacion del Cuadrado X,Y mas el tamaño de este
+  fill(0); //llena de color blanco
+  text("1", 30, 115);
+
+  textSize(50);  //boton 2
+  fill(255); //llena de color negro
+  rect(70, 80, 40, 40);//Ubicacion del Cuadrado X,Y mas el tamaño de este
+  fill(0); //llena de color blanco
+  text("2", 80, 115);
+
+  textSize(50);  //boton 3
+  fill(255); //llena de color negro
+  rect(120, 80, 40, 40);//Ubicacion del Cuadrado X,Y mas el tamaño de este
+  fill(0); //llena de color blanco
+  text("3", 130, 115);
+
+  textSize(50);  //boton suma
+  fill(255); //llena de color negro
+  rect(170, 80, 40, 40);//Ubicacion del Cuadrado X,Y mas el tamaño de este
+  fill(0); //llena de color blanco
+  text("+", 175, 115);
+
+  textSize(50);  //boton 4
+  fill(255); //llena de color negro
+  rect(20, 140, 40, 40);//Ubicacion del Cuadrado X,Y mas el tamaño de este
+  fill(0); //llena de color blanco
+  text("4", 30, 175);
+
+  textSize(50);  //boton 5
+  fill(255); //llena de color negro
+  rect(70, 140, 40, 40);//Ubicacion del Cuadrado X,Y mas el tamaño de este
+  fill(0); //llena de color blanco
+  text("5", 80, 175);
+
+  textSize(50);  //boton 6
+  fill(255); //llena de color negro
+  rect(120, 140, 40, 40);//Ubicacion del Cuadrado X,Y mas el tamaño de este
+  fill(0); //llena de color blanco
+  text("6", 130, 175);
+
+  textSize(50);  //boton 7
+  fill(255); //llena de color negro
+  rect(20, 190, 40, 40);//Ubicacion del Cuadrado X,Y mas el tamaño de este
+  fill(0); //llena de color blanco
+  text("7", 30, 225);
+
+  textSize(50);  //boton 8
+  fill(255); //llena de color negro
+  rect(70, 190, 40, 40);//Ubicacion del Cuadrado X,Y mas el tamaño de este
+  fill(0); //llena de color blanco
+  text("8", 80, 225);
+
+  textSize(50);  //boton 9
+  fill(255); //llena de color negro
+  rect(120, 190, 40, 40);//Ubicacion del Cuadrado X,Y mas el tamaño de este
+  fill(0); //llena de color blanco
+  text("9", 130, 225);
+
+  textSize(50);  //boton 0
+  fill(255); //llena de color negro
+  rect(70, 240, 40, 40);//Ubicacion del Cuadrado X,Y mas el tamaño de este
+  fill(0); //llena de color blanco
+  text("0", 80, 275);
+
+  textSize(50);  //boton -
+  fill(255); //llena de color negro
+  rect(170, 140, 40, 40); //Ubicacion del Cuadrado X,Y mas el tamaño de este
+  fill(0); //llena de color blanco
+  text("-", 180, 170);
+
+  textSize(50);  //boton *
+  fill(255); //llena de color negro
+  rect(170, 190, 40, 40);
+  fill(0); //llena de color blanco
+  text("*", 180, 235);
+
+  textSize(50);  //boton =
+  fill(255); //llena de color negro
+  rect(150, 240, 60, 40);
+  fill(0); //llena de color blanco
+  text("=", 170, 280);
+
+  textSize(50);  //Display o pantalla de resultados
+  fill(255); //llena de color negro
+  rect(20, 20, 190, 40);
+  fill(0); //llena de color blanco
+  text(valorDisplay, 80, 55);
+}
+
+void mouseClicked() {
+  // Botones de números
+  if (mouseX >= 20 && mouseX <= 60 && mouseY >= 80 && mouseY <= 120) {
+    appendValorDisplay(1);
+  } else if (mouseX >= 70 && mouseX <= 110 && mouseY >= 80 && mouseY <= 120) {
+    appendValorDisplay(2);
+  } else if (mouseX >= 120 && mouseX <= 160 && mouseY >= 80 && mouseY <= 120) {
+    appendValorDisplay(3);
+  } else if (mouseX >= 20 && mouseX <= 60 && mouseY >= 140 && mouseY <= 180) {
+    appendValorDisplay(4);
+  } else if (mouseX >= 70 && mouseX <= 110 && mouseY >= 140 && mouseY <= 180) {
+    appendValorDisplay(5);
+  } else if (mouseX >= 120 && mouseX <= 160 && mouseY >= 140 && mouseY <= 180) {
+    appendValorDisplay(6);
+  } else if (mouseX >= 20 && mouseX <= 60 && mouseY >= 190 && mouseY <= 230) {
+    appendValorDisplay(7);
+  } else if (mouseX >= 70 && mouseX <= 110 && mouseY >= 190 && mouseY <= 230) {
+    appendValorDisplay(8);
+  } else if (mouseX >= 120 && mouseX <= 160 && mouseY >= 190 && mouseY <= 230) {
+    appendValorDisplay(9);
+  } else if (mouseX >= 70 && mouseX <= 110 && mouseY >= 240 && mouseY <= 280) {
+    appendValorDisplay(0);
+  }
+  //Operadores
+  else if (mouseX >= 170 && mouseX <= 210 && mouseY >= 80 && mouseY <= 120) {
+    operador = '+';
+    guardarPrimerNumero();
+  // Botón de igual
+  }else if (mouseX >= 150 && mouseX <= 210 && mouseY >= 240 && mouseY <= 280) {
+    ejecutarOperacion();
+  }
+}
+void appendValorDisplay(int numero) {
+  valorDisplay = valorDisplay * 10 + numero;
+}
+void guardarPrimerNumero() {
+  primerNumero = valorDisplay;
+  valorDisplay = 0;
+  primerNumeroIngresado = true;
+}
+void ejecutarOperacion() {
+  if (primerNumeroIngresado) {
+    int segundoNumero = valorDisplay;
+    if (operador == '+') {
+      valorDisplay = primerNumero + segundoNumero;
+    }
+    primerNumeroIngresado = false;
+  }
+}
